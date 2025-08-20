@@ -1,11 +1,34 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import GlobalNotification from '@/components/GlobalNotification.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div>
+    <nav>
+      <RouterLink to="/login">Login</RouterLink>
+      <RouterLink to="/register">Register</RouterLink>
+      <RouterLink to="/recipes">Recipes</RouterLink>
+    </nav>
+    <GlobalNotification />
+    <RouterView />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+nav {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+}
+
+nav a.router-link-exact-active {
+  font-weight: bold;
+}
+</style>
