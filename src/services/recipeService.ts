@@ -18,7 +18,8 @@ export interface RecipePayload {
   }
 }
 
-export const getRecipes = () => api.get('/api/v1/recipes')
+export const getRecipes = (search?: string) =>
+  api.get('/api/v1/recipes', { params: { search } })
 
 export const getRecipe = (id: number, include?: string) =>
   api.get(`/api/v1/recipes/${id}`, { params: { include } })

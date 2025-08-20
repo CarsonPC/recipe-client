@@ -3,6 +3,8 @@ import Login from '@/views/Login.vue'
 import Register from '@/views/Register.vue'
 import RecipeList from '@/views/RecipeList.vue'
 import RecipeForm from '@/views/RecipeForm.vue'
+import RecipeSearch from '@/views/RecipeSearch.vue'
+import RecipeDelete from '@/views/RecipeDelete.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const isAuthenticated = () => !!localStorage.getItem('token')
@@ -25,9 +27,21 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
+      path: '/recipes/search',
+      name: 'recipe-search',
+      component: RecipeSearch,
+      meta: { requiresAuth: true },
+    },
+    {
       path: '/recipes/:id/edit',
       name: 'recipe-edit',
       component: RecipeForm,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: '/recipes/:id/delete',
+      name: 'recipe-delete',
+      component: RecipeDelete,
       meta: { requiresAuth: true },
     },
     { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFound },
